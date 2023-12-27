@@ -92,11 +92,11 @@ class Program():
             "1f": glUniform1f,
         }
 
-        for varname, tpe in shader_opts["uniforms"].items():
+        for varname, _ in shader_opts["uniforms"].items():
             self.locations["uniforms"][varname] = glGetUniformLocation(
                 self.id, varname)
 
-        for varname, tpe in shader_opts["attributes"].items():
+        for varname, _ in shader_opts["attributes"].items():
             self.locations["attributes"][varname] = glGetAttribLocation(
                 self.id, varname)
 
@@ -139,7 +139,7 @@ class Program():
                 "Warning: set_uniform(): Uniform {} is not used in the shader.".format(key))
 
     def items_draw(self, mat_v_inverted):
-        for label, item in self.items.items():
+        for _, item in self.items.items():
             item.draw(mat_v_inverted)
 
     @staticmethod

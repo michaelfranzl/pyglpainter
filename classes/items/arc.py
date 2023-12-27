@@ -36,7 +36,7 @@ class Arc(Item):
     arc, so the user is responsible to do the correct 2D geometry math
     themselves.
 
-    If start, end, and offset don't descibe a circular arc, a warning is
+    If start, end, and offset don't describe a circular arc, a warning is
     output, and the drawn result may be wrong.
 
     To simply draw a circle, use the more convenient Circle class instead.

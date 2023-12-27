@@ -40,7 +40,7 @@ OpenGL.FULL_LOGGING = False
 
 class PainterWidget(QOpenGLWidget):
     """
-    This class extends PyQt5's QGLWidget with boilerplate code neccessary
+    This class extends PyQt5's QGLWidget with boilerplate code necessary
     for applications which want to build a classical orthagnoal 3D world
     in which the user can interactively navigate with the mouse via the
     classical (and expected) Pan-Zoom-Rotate paradigm implemented via a
@@ -96,12 +96,12 @@ class PainterWidget(QOpenGLWidget):
     Right Button drag up/down: Move camera ahead/back (same as wheel)
 
     The FOV (Field of View) is held constant. "Zooming" is rather moving
-    the camera ahead, which is more natural than changing the FOV of the 
+    the camera ahead, which is more natural than changing the FOV of the
     camera. Even cameras in movies and TV series very, very rarely zoom
     any more.
 
     TODO:
-    * TRIANGLE_STRIP-based surface compund primitive
+    * TRIANGLE_STRIP-based surface compound primitive
     * Support of more OpenGL features (textures, lights, etc.)
     """
 
@@ -189,7 +189,7 @@ class PainterWidget(QOpenGLWidget):
 
         @param label
         A string containing a unique label for the program that can be
-        passed into the item_create() funtion call, which tells the Item
+        passed into the item_create() function call, which tells the Item
         which shaders to use for its drawing.
 
         @param vertex_filepath
@@ -247,7 +247,7 @@ class PainterWidget(QOpenGLWidget):
                     del self.programs[program_label].items[item_label]
 
     def paintGL(self):
-        """ This function is automatially called by the Qt libraries
+        """ This function is automatically called by the Qt libraries
         whenever updateGL() has been called. This happens for example
         when the window is resized or moved or when it is marked as
         'dirty' by the window manager. It also fires during mouse
@@ -300,7 +300,7 @@ class PainterWidget(QOpenGLWidget):
         cam_look = self.mat_v_inverted * QVector4D(0, 0, 1, 0)
         self.cam_look = QVector3D(cam_look[0], cam_look[1], cam_look[2])
 
-        # the postion of the camera
+        # the position of the camera
         # extract 4th column
         cam_pos = self.mat_v_inverted * QVector4D(0, 0, 0, 1)
         self.cam_pos = QVector3D(cam_pos[0], cam_pos[1], cam_pos[2])
@@ -340,7 +340,8 @@ class PainterWidget(QOpenGLWidget):
         glViewport(0, 0, width, height)
 
     def mousePressEvent(self, event):
-        """ Called by the Qt libraries whenever the window receives a mouse click.
+        """ Called by the Qt libraries whenever the window
+        receives a mouse click.
 
         For info on mouse navigation see comments for this class above.
 
@@ -473,7 +474,8 @@ class PainterWidget(QOpenGLWidget):
         rewriting (1) to get explicit form of trackball sphere:
             (2) z = sqrt(r**2 - (x**2 + y**2))
 
-        explicit form of hyperbola that tangentially touches the trackball sphere:
+        explicit form of hyperbola that tangentially touches the
+        trackball sphere:
             (4) z = r**2 / ( 2 * sqrt(x**2 + y**2))
 
         intersection of sphere and hyperbola is defined by the circle ...

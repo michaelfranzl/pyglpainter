@@ -88,7 +88,7 @@ class Item():
         Scale of this item in world space.
 
         @param vertexcount_max
-        The maxiumum number of vertices supported by this item. If you
+        The maximum number of vertices supported by this item. If you
         decide later that you want to add more vertices than specified
         here, call `set_vertexcount_max()`. Remember that allocating CPU
         and GPU memory for vertices are an expensive operation and should
@@ -212,7 +212,8 @@ class Item():
         if new_count > self.vertexcount_max:
             self.vertexcount_max = new_count
             extension = np.zeros(
-                new_count, [("position", np.float32, 3), ("color", np.float32, 4)])
+                new_count,
+                [("position", np.float32, 3), ("color", np.float32, 4)])
             self.vdata_pos_col = np.append(self.vdata_pos_col, extension)
         else:
             raise BufferError("Item '{}': You are trying to set a vertex count lower than has been reserved during initialization. This isn't yet supported. User a lower count during initialization instead.".format(
@@ -324,7 +325,7 @@ class Item():
         self.program.set_uniform("mat_m", mat_m)
 
         for key, val in self.uniforms.items():
-            if not key in self.program.locations["uniforms"]:
+            if key not in self.program.locations["uniforms"]:
                 raise SystemError(
                     "Shader does not know about uniform {}".format(key))
             self.program.set_uniform(key, val)
@@ -375,7 +376,7 @@ class Item():
         mat_m.translate(self.origin)
 
         if self.billboard:
-            # Billboard calulation is based on excellent tutorial:
+            # Billboard calculation is based on excellent tutorial:
             # http://nehe.gamedev.net/article/billboarding_how_to/18011/
 
             # extract 2nd column which is camera up vector
@@ -391,7 +392,7 @@ class Item():
             bill_look = cam_pos - self.origin
             bill_look.normalize()
 
-            if self.billboard_axis == None:
+            if self.billboard_axis is None:
                 # Fully aligned billboard, rotation not restricted to axes.
                 # Calculate new self right vector based upon self look and
                 # camera up
