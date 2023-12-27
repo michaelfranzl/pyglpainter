@@ -40,7 +40,7 @@ pip install pyglpainter
 ## Usage
 
 The test directory of the source repository provides a full integration example,
-which can also be run for testing (above screenshot contains the result).
+which can also be run for testing.
 
 Most of the time, calls to `item_create()` are enough to build a 3D world with objects
 in it (the name for these objects here is "items"). Items can be rendered using different shader
