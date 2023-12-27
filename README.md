@@ -1,65 +1,72 @@
-# pyglpainter - Python OpenGL Painter
+# pyglpainter
 
-Minimalistic but modern OpenGL drawing for technical applications
+Minimalistic, modern OpenGL drawing library for technical applications, teaching or
+experimentation. It is implemented in Python 3 with Qt 5 bindings (it inherits from `QOpenGLWidget`).
 
-![](http://michaelfranzl.com/wp-content/uploads/2016/04/Selection_309-1024x576.png)
+It provides a simple Python API to draw raw OpenGL primitives (`LINES`, `LINE_STRIP`, `TRIANGLES`, etc.)
+as well as a number of useful composite primitives
+(see classes `Grid`, `Star`, `CoordSystem`, `Text`, `Circle`, `Arc`, `HeightMap`, `OrthoLineGrid`).
 
-This Python module provides the class `PainterWidget`, extending PyQt5's `QGLWidget` class with
-boilerplate code necessary for applications which want to build a classical orthagonal 3D world in
-which the user can interactively navigate with the mouse via the classical (and expected)
-Pan-Zoom-Rotate paradigm implemented via a virtual trackball (using quaternions for rotations).
+All objects/items can either be drawn as real
+3D world entities (which optionally support "billboard" mode), or as a 2D overlay.
 
-This class is especially useful for technical visualizations in 3D space. It provides a simple
-Python API to draw raw OpenGL primitives (`LINES`, `LINE_STRIP`, `TRIANGLES`, etc.) as well as a
-number of useful composite primitives rendered by this class itself (`Grid`, `Star`, `CoordSystem`,
-`Text`, etc., see files in classes/items). As a bonus, all objects/items can either be drawn as real
-3D world entities which optionally support "billboard" mode (fully camera-aligned or arbitrary- axis
-aligned), or as a 2D overlay.
+The user can interactively navigate using the mouse via the classical Pan-Zoom-Rotate paradigm
+implemented via a virtual trackball (using quaternions for rotations).
 
-It uses the "modern", shader-based, OpenGL API rather than the deprecated "fixed pipeline" and was
-developed for Python version 3 and Qt version 5.
 
-Model, View and Projection matrices are calculated on the CPU, and then utilized in the GPU.
+## Background
+
+This code was originally written for a CNC application, but then split off
+and made more general.
+
+This library was developed to produce simple technical visualizations
+and minimalistic line drawings in 3D space; it does not implement a hierarchical scene graph.
+To be extensible, shader code has to be supplied by the application.
+
+It uses the "modern", shader-based, OpenGL API rather than the deprecated "fixed pipeline".
 
 Qt has been chosen not only because it provides the GL environment, but also vector, matrix and
-quaternion math. A port of this Python code into native Qt C++ is therefore trivial.
+quaternion math. A port of this Python code into native Qt C++ would therefore be trivial.
 
-Look at `example.py`, part of this project, to see how this class can be used. If you need more
-functionality, consider sub-classing.
 
-Most of the time, calls to `item_create()` are enough to build a 3D world with interesting objects
-in it (the name for these objects here is "items"). Items can be rendered with different shaders.
 
-This project was originally created for a CNC application, but then extracted from this application
-and made multi-purpose. The author believes it contains the simplest and shortest code to quickly
-utilize the basic and raw powers of OpenGL. To keep code simple and short, the project was optimized
-for technical, line- and triangle based primitives, not the realism that game engines strive for.
-The simple shaders included in this project will draw aliased lines and the output therefore will
-look more like computer graphics of the 80's.  But "modern" OpenGL offloads many things into shaders
-anyway.
+## Installation
 
-This class can either be used for teaching purposes, experimentation, or as a visualization backend
-for production-class applications.
+```sh
+pip install pyglpainter
+```
 
-## Mouse Navigation
 
-Left Button drag left/right/up/down: Rotate camera left/right/up/down
+## Usage
 
-Middle Button drag left/right/up/down: Move camera left/right/up/down
+The (test)[test] directory provides a full integration example,
+which can also be run for testing (above screenshot contains the result).
 
-Wheel rotate up/down: Move camera ahead/back
+Most of the time, calls to `item_create()` are enough to build a 3D world with objects
+in it (the name for these objects here is "items"). Items can be rendered using different shader
+programs.
 
-Right Button drag up/down: Move camera ahead/back (same as wheel)
 
-The FOV (Field of View) is held constant. "Zooming" is rather moving the camera forward along its
-look axis, which is more natural than changing the FOV of the camera. Even cameras in movies and TV
-series nowadays very, very rarely zoom.
+### Mouse Navigation
+
+**Left Button drag left/right/up/down:** Rotate camera left/right/up/down
+
+**Middle Button drag left/right/up/down:** Move camera left/right/up/down
+
+**Wheel rotate up/down:** Move camera ahead/back
+
+**Right Button drag up/down:** Move camera ahead/back (same as wheel)
+
+One particular choice was to hold the camera's field of view constant; "Zooming" can be achieved by
+moving the camera forward along its look axis.
+
+
+## Requirements
+
+* OpenGL version 2.1 (with GLSL version 1.20)
 
 
 ## Development
-
-Your graphics hardware and drivers need to support at least OpenGL version 2.1 with GLSL version
-1.20.
 
 Install the Python version specified in the file `.python-version`.
 
@@ -70,16 +77,9 @@ pip install pipenv --user
 pipenv install
 ```
 
+### Building
 
-### Usage as a module in your own project
-
-You first need to create a PyQt5 window, then add to it one `PainterWidget` instance (for working
-code see `example.py`). Let's say this `PainterWidget` instance is stored in the variable `painter`.
-You then can simply draw a coordinate system:
-
-```python
-mycs1 = painter.item_create("CoordSystem", "mycs1", "simple3d", 12, (0, 0, 0))
+```sh
+pipenv run make build_deps
+pipenv run make dist
 ```
-
-This means: Painter, create an item of class `CoordSystem` labeled "mycs1" with the shader program
-called "simple3d". Scale it by 12 and put its origin to the world coordinates (0,0,0).
