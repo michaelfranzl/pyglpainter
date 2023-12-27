@@ -39,7 +39,7 @@ pip install pyglpainter
 
 ## Usage
 
-The (test)[test] directory provides a full integration example,
+The test directory of the source repository provides a full integration example,
 which can also be run for testing (above screenshot contains the result).
 
 Most of the time, calls to `item_create()` are enough to build a 3D world with objects
