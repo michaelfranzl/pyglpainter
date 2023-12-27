@@ -20,7 +20,7 @@ along with pyglpainter. If not, see <https://www.gnu.org/licenses/>.
 
 from PyQt5.QtWidgets import QMainWindow
 from ui_mainwindow import Ui_MainWindow
-from classes.painterwidget import PainterWidget
+from pyglpainter.classes.painterwidget import PainterWidget
 
 
 class MainWindow(QMainWindow, Ui_MainWindow):
