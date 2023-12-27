@@ -30,7 +30,7 @@ import math
 import re
 
 from PyQt5.QtGui import QMatrix4x4, QVector3D, QVector4D, QQuaternion
-from PyQt5.QtOpenGL import QGLWidget
+from PyQt5.QtWidgets import QOpenGLWidget
 from PyQt5.QtCore import Qt, QTimer
 
 import OpenGL
@@ -38,7 +38,7 @@ OpenGL.ERROR_CHECKING = False
 OpenGL.FULL_LOGGING = False
 
 
-class PainterWidget(QGLWidget):
+class PainterWidget(QOpenGLWidget):
     """
     This class extends PyQt5's QGLWidget with boilerplate code neccessary
     for applications which want to build a classical orthagnoal 3D world
@@ -512,7 +512,7 @@ class PainterWidget(QGLWidget):
         """
 
         if self.dirty:
-            self.updateGL()
+            self.update()
             self.dirty = False
 
     @staticmethod
