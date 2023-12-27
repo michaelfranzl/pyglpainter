@@ -63,18 +63,23 @@ moving the camera forward along its look axis.
 
 ## Requirements
 
+* The Python version specified in the file `.python-version`
 * OpenGL version 2.1 (with GLSL version 1.20)
 
 
 ## Development
-
-Install the Python version specified in the file `.python-version`.
 
 Dependencies are managed using `pipenv`:
 
 ```sh
 pip install pipenv --user
 pipenv install
+```
+
+To run the example:
+
+```sh
+PYTHONPATH=src pipenv run python ./test/example.py
 ```
 
 ### Building
