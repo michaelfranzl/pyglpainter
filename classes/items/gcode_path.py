@@ -22,7 +22,7 @@ import numpy as np
 from OpenGL.GL import (glBindBuffer, glBufferSubData, GL_LINE_STRIP,
                        GL_ARRAY_BUFFER)
 
-from gcode_machine.gcode_machine import GcodeMachine
+from gcode_machine import GcodeMachine
 from .item import Item
 
 

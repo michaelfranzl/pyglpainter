@@ -56,22 +56,18 @@ look axis, which is more natural than changing the FOV of the camera. Even camer
 series nowadays very, very rarely zoom.
 
 
-
-## Installation
+## Development
 
 Your graphics hardware and drivers need to support at least OpenGL version 2.1 with GLSL version
 1.20.
 
-Get and install `python3`, its `venv` module, and `git`. Then:
+Install the Python version specified in the file `.python-version`.
 
-```bash
-git clone https://github.com/michaelfranzl/pyglpainter
-cd pyglpainter
-git clone https://github.com/michaelfranzl/gcode_machine.git
-python3 -m venv venv
-source venv/bin/activate
-pip install -r requirements.txt
-./example.py
+Dependencies are managed using `pipenv`:
+
+```sh
+pip install pipenv --user
+pipenv install
 ```
 
 

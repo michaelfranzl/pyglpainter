@@ -1,0 +1,15 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+numpy = "*"
+pyqt5 = "*"
+pyopengl = "*"
+gcode-machine = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.12"
