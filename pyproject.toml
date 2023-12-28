@@ -3,7 +3,7 @@ name = "pyglpainter"
 authors = [
   {name = "Michael Franzl", email = "public.michael@franzl.name"},
 ]
-version = "1.0.3"
+version = "1.0.4"
 description = "Minimalistic, modern OpenGL drawing for technical applications"
 readme = "README.md"
 requires-python = ">=3.12"
