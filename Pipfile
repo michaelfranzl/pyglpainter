@@ -10,6 +10,8 @@ pyopengl = "*"
 gcode-machine = "*"
 
 [dev-packages]
+build = "*"
+twine = "*"
 
 [requires]
 python_version = "3.12"

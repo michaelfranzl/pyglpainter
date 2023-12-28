@@ -5,10 +5,6 @@ clean:
 dist:
 	python -m build --sdist .
 
-build_deps:
-	python -m pip install build
-	python -m pip install twine
-
 .PHONY: deploy_test
 deploy_test: dist
 	twine check dist/*

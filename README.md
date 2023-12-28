@@ -73,7 +73,7 @@ Dependencies are managed using `pipenv`:
 
 ```sh
 pip install pipenv --user
-pipenv install
+pipenv install --dev
 ```
 
 To run the example:
