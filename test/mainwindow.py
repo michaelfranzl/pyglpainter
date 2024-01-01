@@ -18,15 +18,20 @@ You should have received a copy of the GNU General Public License
 along with pyglpainter. If not, see <https://www.gnu.org/licenses/>.
 """
 
-from PyQt5.QtWidgets import QMainWindow
-from ui_mainwindow import Ui_MainWindow
+from PyQt5.QtWidgets import QMainWindow, QWidget, QLayout, QHBoxLayout, QGridLayout
 from pyglpainter.classes.painterwidget import PainterWidget
 
 
-class MainWindow(QMainWindow, Ui_MainWindow):
+class MainWindow(QMainWindow):
     def __init__(self):
-        super(MainWindow, self).__init__()
+        super().__init__()
 
-        self.setupUi(self)
+        self.centralWidget = QWidget(self)
+        self.horizontalLayout = QHBoxLayout(self.centralWidget)
+        self.gridLayout1 = QGridLayout()
+        self.gridLayout1.setSizeConstraint(QLayout.SetMaximumSize)
+        self.horizontalLayout.addLayout(self.gridLayout1)
+        self.setCentralWidget(self.centralWidget)
+
         self.painter = PainterWidget(self)
         self.gridLayout1.addWidget(self.painter)
