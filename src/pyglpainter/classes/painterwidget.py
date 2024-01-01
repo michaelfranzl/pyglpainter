@@ -29,9 +29,9 @@ from OpenGL.GL import (glGetString, glEnable, glBlendFunc, glHint,
 import math
 import re
 
-from PyQt5.QtGui import QMatrix4x4, QVector3D, QVector4D, QQuaternion
-from PyQt5.QtWidgets import QOpenGLWidget
-from PyQt5.QtCore import Qt, QTimer
+from PyQt6.QtGui import QMatrix4x4, QVector3D, QVector4D, QQuaternion
+from PyQt6.QtOpenGLWidgets import QOpenGLWidget
+from PyQt6.QtCore import Qt, QTimer
 
 import OpenGL
 OpenGL.ERROR_CHECKING = False
@@ -343,18 +343,18 @@ class PainterWidget(QOpenGLWidget):
         are calculated in mouseMoveEvent().
         """
         btns = event.buttons()
-        x = event.localPos().x()
-        y = event.localPos().y()
+        x = event.position().x()
+        y = event.position().y()
 
-        if btns & Qt.LeftButton:
+        if btns & Qt.MouseButton.LeftButton:
             self._mouse_rotation_start_vec = self._find_trackball_vector(x, y)
             self._rotation_quat_start = self._rotation_quat
 
-        elif btns & (Qt.MidButton):
+        elif btns & (Qt.MouseButton.MiddleButton):
             self._mouse_translation_start_vec = QVector3D(x, y, 0)
             self._translation_vec_start = self._translation_vec
 
-        elif btns & (Qt.RightButton):
+        elif btns & (Qt.MouseButton.RightButton):
             self._mouse_camforward_start = y
             self._translation_vec_start = self._translation_vec
 
@@ -385,10 +385,10 @@ class PainterWidget(QOpenGLWidget):
         btns = event.buttons()
 
         # pixel coordinates relative to the window
-        x = event.localPos().x()
-        y = event.localPos().y()
+        x = event.position().x()
+        y = event.position().y()
 
-        if btns & Qt.LeftButton:
+        if btns & Qt.MouseButton.LeftButton:
             # Rotation via emulated trackball using quaternions.
             # For method employed see:
             # https://en.wikipedia.org/wiki/Quaternions_and_spatial_rotation
@@ -418,7 +418,7 @@ class PainterWidget(QOpenGLWidget):
             self._rotation_quat = delta * self._rotation_quat_start
             self._rotation_quat.normalize()
 
-        elif btns & Qt.MidButton:
+        elif btns & Qt.MouseButton.MiddleButton:
             # Translation left/right and up/down depending on camera
             # orientation
             diff = QVector3D(x, y, 0) - self._mouse_translation_start_vec
@@ -428,7 +428,7 @@ class PainterWidget(QOpenGLWidget):
             self._translation_vec = self._translation_vec_start - \
                 self.cam_right * diff_x * 2 + self.cam_up * diff_y * 2
 
-        elif btns & Qt.RightButton:
+        elif btns & Qt.MouseButton.RightButton:
             # Translation forward/backward depending on camera orientation
             diff_y = y - self._mouse_camforward_start
             self._translation_vec = self._translation_vec_start - \

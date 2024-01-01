@@ -5,9 +5,9 @@ name = "pypi"
 
 [packages]
 numpy = "*"
-pyqt5 = "*"
 pyopengl = "*"
 gcode-machine = "*"
+pyqt6 = "*"
 
 [dev-packages]
 build = "*"

@@ -1,7 +1,7 @@
 # pyglpainter
 
 Minimalistic, modern OpenGL drawing library for technical applications, teaching or
-experimentation. It is implemented in Python 3 with Qt 5 bindings (it inherits from `QOpenGLWidget`).
+experimentation. It is implemented in Python 3 with Qt 6 bindings (it inherits from `QOpenGLWidget`).
 
 It provides a simple Python API to draw raw OpenGL primitives (`LINES`, `LINE_STRIP`, `TRIANGLES`, etc.)
 as well as a number of useful composite primitives

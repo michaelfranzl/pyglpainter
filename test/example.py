@@ -25,7 +25,7 @@ import random
 import sys
 import math
 
-from PyQt5.QtWidgets import QApplication
+from PyQt6.QtWidgets import QApplication
 
 import numpy as np
 
@@ -323,7 +323,7 @@ def main():
     # ===== DELETE ITEMS (OPTIONAL) =====
     # p.item_remove("mystar2")
 
-    sys.exit(app.exec_())
+    sys.exit(app.exec())
 
 
 if __name__ == "__main__":

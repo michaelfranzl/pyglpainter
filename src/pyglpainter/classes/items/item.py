@@ -23,7 +23,7 @@ import numpy as np
 import ctypes
 import math
 
-from PyQt5.QtGui import (QMatrix4x4, QVector3D, QVector4D)
+from PyQt6.QtGui import (QMatrix4x4, QVector3D, QVector4D)
 
 from OpenGL.GL import (glBindVertexArray, glBindBuffer,
                        glEnableVertexAttribArray, glVertexAttribPointer,
