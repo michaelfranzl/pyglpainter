@@ -105,8 +105,6 @@ class PainterWidget(QOpenGLWidget):
     * Support of more OpenGL features (textures, lights, etc.)
     """
 
-    __version__ = "0.2.0"
-
     def __init__(self, parent=None, refresh_rate=20):
         super().__init__(parent)
 
