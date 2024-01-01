@@ -131,12 +131,7 @@ class Program():
             elif "v" in function_string:
                 function(location, count, val)
             else:
-                print("set_uniform", key, val)
                 function(location, *val)
-
-        else:
-            print(
-                "Warning: set_uniform(): Uniform {} is not used in the shader.".format(key))
 
     def items_draw(self, mat_v_inverted):
         for _, item in self.items.items():

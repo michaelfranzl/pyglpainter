@@ -155,14 +155,12 @@ class PainterWidget(QOpenGLWidget):
         """
         This function is called once on application startup. See Qt Docs.
         """
-        print("initializeGL called")
-
         # output some useful information
-        print("OPENGL EXTENSIONS", glGetString(GL_EXTENSIONS))
-        print("OPENGL VERSION", glGetString(GL_VERSION))
-        print("OPENGL VENDOR", glGetString(GL_VENDOR))
-        print("OPENGL RENDERER", glGetString(GL_RENDERER))
-        print("OPENGL GLSL VERSION", glGetString(GL_SHADING_LANGUAGE_VERSION))
+        # print("OPENGL EXTENSIONS", glGetString(GL_EXTENSIONS))
+        # print("OPENGL VERSION", glGetString(GL_VERSION))
+        # print("OPENGL VENDOR", glGetString(GL_VENDOR))
+        # print("OPENGL RENDERER", glGetString(GL_RENDERER))
+        # print("OPENGL GLSL VERSION", glGetString(GL_SHADING_LANGUAGE_VERSION))
 
         # some global OpenGL settings
         glEnable(GL_DEPTH_TEST)
@@ -266,8 +264,6 @@ class PainterWidget(QOpenGLWidget):
            a. Binding the data buffers of the object
            b. Drawing of the object
         """
-        print("paintGL called")
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT)
 
         # ======= VIEW MATRIX BEGIN ==========
@@ -333,7 +329,6 @@ class PainterWidget(QOpenGLWidget):
     def resizeGL(self, width, height):
         """ Called by the Qt libraries whenever the window is resized
         """
-        print("resizeGL called")
         self.width = width
         self.height = height
         self.aspect = width / height
