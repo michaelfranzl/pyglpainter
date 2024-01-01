@@ -108,7 +108,7 @@ class PainterWidget(QOpenGLWidget):
     __version__ = "0.2.0"
 
     def __init__(self, parent=None, refresh_rate=20):
-        super(PainterWidget, self).__init__(parent)
+        super().__init__(parent)
 
         self.mat_v = QMatrix4x4()  # the current View matrix
         self.mat_v_inverted = QMatrix4x4()  # the current inverse View matrix
