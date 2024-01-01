@@ -49,7 +49,7 @@ class Program():
 
         @param label
         A string containing a unique label for the program that can be
-        passed into the item_create() funtion call, which tells the Item
+        passed into the item_create() function call, which tells the Item
         which shaders to use for its drawing.
 
         @param vertex_filepath
